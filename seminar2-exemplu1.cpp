@@ -1,3 +1,5 @@
+/*de rezolvat erorile*/
+
 #include <iostream>
 using namespace std;
 
