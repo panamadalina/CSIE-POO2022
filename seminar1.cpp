@@ -25,7 +25,7 @@ void main() {
             //Erori de executie-> apar in momentul executiei
     //OBS: Start Debugging!
 
-    //Def.2.: Perfomanta unui program
+    //Def.2.: Performanta unui program
             //Timp de executie & Memorie ocupata
    
     //Def.3.: Timp de executie: BigO ( https://www.geeksforgeeks.org/analysis-algorithms-big-o-analysis/ )
