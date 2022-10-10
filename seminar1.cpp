@@ -43,7 +43,10 @@ void main() {
 
 
 	//Def.5.: STACK vs. HEAP (https://ocw.cs.pub.ro/courses/so/laboratoare/laborator-05)
-    //Obs: 	
+    
+	//Exemplu pe tabla: https://www.youtube.com/watch?v=_8-ht2AKyH4
+	
+	//Obs: 	
         //->Stack OVERFLOW (https://www.techtarget.com/whatis/definition/stack-overflow)
         //->Heap OVERFLOW (https://en.wikipedia.org/wiki/Heap_overflow)
         //->Memory Leaks (https://www.geeksforgeeks.org/what-is-memory-leak-how-can-we-avoid/)
