@@ -1,7 +1,6 @@
 #include<iostream>
 #include<string.h>
 
-/*https://docs.microsoft.com/en-us/visualstudio/debugger/finding-memory-leaks-using-the-crt-library?view=vs-2022*/
 #define _CRTDBG_MAP_ALLOC
 #include <stdlib.h>
 #include <crtdbg.h>
@@ -46,6 +45,24 @@ void oglindit3(int nr, int& nrOglindit) {
 		nr /= 10;
 	}
 }
+
+//de adaugat cuv
+char* adauga_cuvant(char* fraza, const char* cuvant) {
+	int dimCuvant = sizeof(cuvant) / sizeof(char);
+
+	if (fraza != nullptr && strlen(fraza) > 0) {
+		char* aux = new char[strlen(fraza) + dimCuvant + 1];
+		for (int i = 0; i < strlen(fraza); i++) {
+			aux[i] = fraza[i];
+		}
+		for (int i = 0; i <= dimCuvant; i++) {
+			aux[strlen(fraza) + i] = cuvant[i];
+		}
+		return aux;
+	}
+	return nullptr;
+}
+
 int main() {
 	int n = 1234;
 	//Obs:
@@ -134,9 +151,33 @@ int main() {
 
 	//variabila "cuvant" nu trebuie stearsa!
 
-	_CrtDumpMemoryLeaks(); //Verif memory leaks
-    /*https://docs.microsoft.com/en-us/visualstudio/debugger/finding-memory-leaks-using-the-crt-library?view=vs-2022*/
+	/*------------------------------------------------------------------------------------*/
+	/*Rezolvati memory leaks:*/
 
+	cout << endl << endl << "Exercitiu:";
+	fraza = new char[5];
+	fraza[0] = 'm';
+	fraza[1] = 'e';
+	fraza[2] = 'r';
+	fraza[3] = 'e';
+	fraza[4] = '\0';//terminator de sir (NULL)
+
+	cout << endl << "Fraza1= ";
+	for (int i = 0; i < 4; i++) {
+		cout << fraza[i];
+	}
+	cout << endl << "->Adaugare cuvant: ";
+
+	/*char cuvant[] = ",pere";*/
+	fraza = adauga_cuvant(fraza, cuvant);
+	cout << endl << "Fraza2= ";
+	for (int i = 0; i < 9; i++) {
+		cout << fraza[i];
+	}
+
+
+
+	_CrtDumpMemoryLeaks(); //Verif memory leaks
 	return 0;
 
 }
