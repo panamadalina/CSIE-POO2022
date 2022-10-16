@@ -154,7 +154,7 @@ int main() {
 	//variabila "cuvant" nu trebuie stearsa!
 
 	/*------------------------------------------------------------------------------------*/
-	/*Rezolvati memory leaks:*/
+	/*Rezolvati memory leaks [REZOLVAT]*/
 
 	cout << endl << endl << "Exercitiu:";
 	fraza = new char[5];
