@@ -58,6 +58,8 @@ char* adauga_cuvant(char* fraza, const char* cuvant) {
 		for (int i = 0; i <= dimCuvant; i++) {
 			aux[strlen(fraza) + i] = cuvant[i];
 		}
+		delete[] fraza;
+		fraza = nullptr;
 		return aux;
 	}
 	return nullptr;
@@ -174,9 +176,9 @@ int main() {
 	for (int i = 0; i < 9; i++) {
 		cout << fraza[i];
 	}
-
-
-
+	delete[]fraza;//sterg fraza 
+	fraza = nullptr;
+	
 	_CrtDumpMemoryLeaks(); //Verif memory leaks
 	return 0;
 
