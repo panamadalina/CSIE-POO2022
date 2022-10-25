@@ -25,7 +25,7 @@ public:
 	int idPersoana;
 	char* nume;
 
-	
+
 	void metoda1() {
 		cout << "\nMetoda1";
 	}
@@ -38,7 +38,15 @@ public:
 		}
 		//_CrtDumpMemoryLeaks();//nu merge
 	}
+
+
+	void metoda2();//EX1
 };
+
+
+void Persoana::metoda2() {//EX1. OPERATOR DE REZOLUTIE
+	cout << "\nMetoda2";
+}
 
 //derivare/specializarea tipurilor de obiecte
 
@@ -68,44 +76,55 @@ public:
 		}
 		else {
 			//alerta
+			throw "cod acces incorect";//EX2
 		}
 	}
 };
 
+//EX3:
 
 int main() {
 	//Ce este o clasa?
 	// 	   Ce contine o clasa?
 
-	
+
 	//	Pers pers;
 	Persoana p; //acesta e un obiect -> o instanta a unei clase
 	//unde e salvat acest obiect?
-	
-	//Avem 3 tipuri de accesari:
+
+	//1. Avem 3 tipuri de accesari:
 
 	/*
 	public - members are accessible from outside the class
-	private (BY DEFaULT) - members cannot be accessed (or viewed) from outside the class --->> INCAPSULARE!!
-	protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes. You will learn more about Inheritance later.*/
+	private (BY DEFAULT) - members cannot be accessed (or viewed) from outside the class --->> INCAPSULARE!!
+	protected - members cannot be accessed from outside the class, however, they can be accessed in inherited classes. You will learn more about Inheritance later.
+	*/
 
 	p.idPersoana = 1234;
 	p.nume = new char[5];
 	strcpy(p.nume, "Mada");
-	cout << "\nPersoana: " << p.idPersoana<<" are numele: "<<p.nume;
-	
+	cout << "\nPersoana: " << p.idPersoana << " are numele: " << p.nume;
+	/*EXEMPLU 2: Tipuri de metode -> din clasa, din afara clasei*/
 
 	p.metoda1();
-	//++ Tipuri de metode -> din clasa, din afara clasei
+	//++
+	p.metoda2();
+
 
 	//GETTERI
 	cout << "\n\nGETTERI:";
 	Angajat ang;
-	cout<< " are salariul: " << ang.getSalariu(1235);//acces interzis->alerta
+	cout << " are salariul: " << ang.getSalariu(1235);//acces interzis-> ALERTA EX2
 
 	//SETTERI
 	cout << "\n\nSETTERI:";
-	ang.setSalariu(1235, 2000);//acces interzis->alerta
+	
+	try {
+		ang.setSalariu(1235, 2000);//acces interzis// AALERTA EX2
+	}
+	catch (const char* excep) {
+		cout << "\nCodul arunca o exceptie:" << excep;
+	}
 
 	Persoana* pp1 = &p;
 	Persoana* pp2 = new Persoana();
@@ -116,5 +135,9 @@ int main() {
 
 	//EXEMPLU: destructor
 	//_CrtDumpMemoryLeaks();//nu merge
+	//False positives:
+	/* https://learn.microsoft.com/en-us/visualstudio/debugger/finding-memory-leaks-using-the-crt-library?view=vs-2022#false-positives */
+
+
 	return 0;
 }
